@@ -24,4 +24,7 @@ int main() {
     if (i == 9) printf("]\n");
     else printf(", ");
   }
+
+  int file = open("arr.txt", O_CREAT | O_RDWR, 0);
+  write(file, rand_nums, sizeof(int) * 10);
 }
