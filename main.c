@@ -27,4 +27,14 @@ int main() {
 
   int file = open("arr.txt", O_CREAT | O_RDWR, 0);
   write(file, rand_nums, sizeof(int) * 10);
+
+  int new_nums[10];
+  read(file, new_nums, sizeof(int) * 10);
+
+  printf("Reading array:\n[");
+  for (i = 0; i < 10; i++) {
+    printf("%d", new_nums[i]);
+    if (i == 9) printf("]\n");
+    else printf(", ");
+  }
 }
