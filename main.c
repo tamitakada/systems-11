@@ -9,6 +9,7 @@ int get_random() {
     read(file, num, sizeof(int));
     return num[0];
   }
+  return -1;
 }
 
 int main() {
@@ -25,9 +26,10 @@ int main() {
     else printf(", ");
   }
 
-  int file = open("arr.txt", O_CREAT | O_RDWR, 0);
+  int file = open("arr.txt", O_CREAT | O_WRONLY, 0644);
   write(file, rand_nums, sizeof(int) * 10);
 
+  file = open("arr.txt", O_RDONLY, 0);
   int new_nums[10];
   read(file, new_nums, sizeof(int) * 10);
 
@@ -37,4 +39,6 @@ int main() {
     if (i == 9) printf("]\n");
     else printf(", ");
   }
+
+  remove("arr.txt");
 }
